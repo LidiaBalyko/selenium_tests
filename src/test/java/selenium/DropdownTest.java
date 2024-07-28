@@ -49,6 +49,7 @@ public class DropdownTest {
         select.selectByIndex(2);
         actualSelectedOptionText = select.getFirstSelectedOption().getText();
         Assert.assertEquals(actualSelectedOptionText, EXPECTED_TEXT_OPTION_2);
+        //this is changes to commit
     }
 }
 
