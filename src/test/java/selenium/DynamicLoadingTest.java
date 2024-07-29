@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class DynamicLoading {
+public class DynamicLoadingTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
