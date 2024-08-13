@@ -9,8 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import selenium.data.DataProviderClass;
 import selenium.luma.page.LoginPage;
 
 import java.time.Duration;
@@ -25,9 +27,9 @@ public class LoginTest extends BaseTest {
     private static final String PASSWORD = "K_Ev2hU@7NUF7si";
     private static final String INVALID_PASSWORD = "K_Ev2hU@7NUF7";
     private static final String USER_NAME = "Anna Sant";
-    private static final  String REQUIRED_FIELDS_ERROR_MESSAGE_TEXT = "This is a required field.";
-    private static final  String INVALID_EMAIL_ERROR_MESSAGE_TEXT = "Please enter a valid email address (Ex: johndoe@domain.com).";
-    private static final  String INVALID_SIGN_IN_ERROR_MESSAGE_TEXT = "The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.";
+    private static final String REQUIRED_FIELDS_ERROR_MESSAGE_TEXT = "This is a required field.";
+    private static final String INVALID_EMAIL_ERROR_MESSAGE_TEXT = "Please enter a valid email address (Ex: johndoe@domain.com).";
+    private static final String INVALID_SIGN_IN_ERROR_MESSAGE_TEXT = "The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.";
 
     private LoginPage loginPage;
 
@@ -57,7 +59,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void invalidEmailTest () {
+    public void invalidEmailTest() {
         loginPage.fillEmailField(INVALID_EMAIL);
         loginPage.fillPasswordField(PASSWORD);
         loginPage.clickSignInButton();
@@ -68,7 +70,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void invalidSignInTest () {
+    public void invalidSignInTest() {
         loginPage.fillEmailField(EMAIL);
         loginPage.fillPasswordField(INVALID_PASSWORD);
         loginPage.clickSignInButton();
@@ -76,4 +78,15 @@ public class LoginTest extends BaseTest {
         softAssert.assertTrue(loginPage.getSignInMessageText().contains(INVALID_SIGN_IN_ERROR_MESSAGE_TEXT));
         softAssert.assertAll();
     }
+
+    @Test(dataProvider = "invalidSignInData", dataProviderClass = DataProviderClass.class)
+        public void invalidSignInDDTest(String invalidPassword) {
+        loginPage.fillEmailField(EMAIL);
+        loginPage.fillPasswordField(invalidPassword);
+        loginPage.clickSignInButton();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(loginPage.getSignInMessageText().contains(INVALID_SIGN_IN_ERROR_MESSAGE_TEXT));
+        softAssert.assertAll();
+    }
 }
+
