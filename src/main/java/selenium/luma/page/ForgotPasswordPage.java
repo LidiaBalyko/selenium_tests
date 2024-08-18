@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ForgotPasswordPage extends BasePage {
 
-    @FindBy(css = "button[title='Reset My Password']")
+    @FindBy(css = "button.submit")
     private WebElement resetPasswordButton;
 
     public ForgotPasswordPage() {
@@ -14,7 +14,7 @@ public class ForgotPasswordPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isResetPasswordButtonDisplayed() {
+    public boolean isPageDisplayed() {
         return resetPasswordButton.isDisplayed();
     }
 }

@@ -1,12 +1,12 @@
 package selenium.luma;
 
-import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import selenium.luma.page.ForgotPasswordPage;
 import selenium.luma.page.LoginPage;
 
 public class ForgotPasswordTest extends BaseTest {
-    private WebDriver driver;
     private LoginPage loginPage;
 
     @BeforeMethod
@@ -15,8 +15,8 @@ public class ForgotPasswordTest extends BaseTest {
     }
 
     @Test
-    public void testCreateAccountLink() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.clickForgotPassword();
+    public void testForgotPasswordLink() {
+        ForgotPasswordPage forgotPasswordPage = loginPage.clickForgotPassword();
+        Assert.assertTrue(forgotPasswordPage.isPageDisplayed());
     }
 }

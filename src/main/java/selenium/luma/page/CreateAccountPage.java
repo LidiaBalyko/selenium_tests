@@ -6,15 +6,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CreateAccountPage extends BasePage {
 
-    @FindBy(linkText = "Create an Account")
-    private WebElement createAccountLink;
+    @FindBy(css = "h1.page-title span")
+    private WebElement pageTitle;
 
-
-   public CreateAccountPage() {
+    public CreateAccountPage() {
         super();
         PageFactory.initElements(driver, this);
     }
-    public void clickCreateAccount() {
-        createAccountLink.click();
+
+    public boolean isPageDisplayed() {
+        return pageTitle.isDisplayed() && pageTitle.getText().equals("Create New Customer Account");
     }
 }

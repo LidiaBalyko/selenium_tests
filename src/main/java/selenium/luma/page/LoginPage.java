@@ -27,8 +27,12 @@ public class LoginPage extends BasePage {
     @FindBy(linkText = "Create an Account")
     private WebElement createAccountLink;
 
+    @FindBy(css = "h1.page-title span")
+    private WebElement pageTitle;
+
     @FindBy(linkText = "Forgot Your Password?")
     private WebElement forgotPasswordLink;
+
 
     public LoginPage() {
         super();
@@ -67,12 +71,14 @@ public class LoginPage extends BasePage {
     public String getSignInMessageText() {
         return signInMessage.getText();
     }
-    public void clickCreateAccount() {
+    public CreateAccountPage clickCreateAccount() {
         createAccountLink.click();
+        return new CreateAccountPage();
     }
 
-    public void clickForgotPassword() {
+    public ForgotPasswordPage clickForgotPassword() {
         forgotPasswordLink.click();
+        return new ForgotPasswordPage();
     }
 
 }
