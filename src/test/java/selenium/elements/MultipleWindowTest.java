@@ -1,4 +1,4 @@
-package selenium;
+package selenium.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class MultipleWindowTest {
     private WebDriver driver;
