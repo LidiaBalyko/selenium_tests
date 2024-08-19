@@ -11,13 +11,13 @@ public class BaseTest {
 
     protected HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void init() {
         DriverManager.getDriver().get(BASE_URL);
         homePage = new HomePage();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         DriverManager.tearDown();
     }
